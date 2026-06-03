@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+img-src 'self' data: https:;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com;
+font-src 'self' https://fonts.gstatic.com;
+script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com;
+frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+connect-src 'self';
+object-src 'none';
+base-uri 'self';
+form-action 'self';
+upgrade-insecure-requests;">
+
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<title>BachaLo - Safety App</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at top left,#2563eb,#0f172a 40%),
+    radial-gradient(circle at bottom right,#7c3aed,#020617 50%);
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url("https://www.transparenttextures.com/patterns/stardust.png");
+    opacity:.25;
+    z-index:-1;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 8%;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:60px;
+    border-radius:15px;
+}
+
+.logo h2{
+    color:#fff;
+}
+
+.download-btn{
+    padding:12px 28px;
+    border:none;
+    border-radius:50px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(20px);
+    color:white;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.25);
+    transition:.3s;
+}
+
+.download-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 25px #00e5ff;
+}
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px 8%;
+    gap:60px;
+}
+
+.glass-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(25px);
+    border-radius:30px;
+    padding:50px;
+    max-width:650px;
+    box-shadow:0 8px 40px rgba(0,0,0,.35);
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:15px;
+    background:linear-gradient(90deg,#fff,#00e5ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:#dbeafe;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:15px;
+}
+
+.primary-btn{
+    padding:14px 32px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    background:#00e5ff;
+    color:#000;
+    font-weight:600;
+}
+
+.secondary-btn{
+    padding:14px 32px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,.25);
+    background:rgba(255,255,255,.08);
+    color:white;
+    backdrop-filter:blur(20px);
+}
+
+.phone{
+    width:300px;
+    animation:float 4s ease-in-out infinite;
+}
+
+.phone img{
+    width:100%;
+    border-radius:30px;
+    box-shadow:0 0 40px rgba(0,229,255,.45);
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-20px);}
+}
+
+.features{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:2.5rem;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.feature{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:25px;
+    padding:30px;
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(0,229,255,.4);
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    color:#cbd5e1;
+}
+
+@media(max-width:900px){
+
+.hero{
+    flex-direction:column;
+}
+
+.hero h1{
+    font-size:3rem;
+}
+
+.phone{
+    width:250px;
+}
+
+}
+</style>
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+</head>
+
+<body>
+<div id="particles-js"></div>
+
+<nav class="navbar">
+
+<div class="logo">
+<img src="assets/logo.png">
+<h2>BachaLo</h2>
+</div>
+
+<!-- <button class="download-btn">
+Download APK
+</button> -->
+
+</nav>
+
+<section class="hero">
+
+<div class="glass-card" data-aos="fade-right">
+
+<h1>BachaLo</h1>
+
+<p>
+Women's Safety & Emergency Assistance App.
+Send live location, trigger SOS, activate voice emergency mode,
+and protect yourself with one tap.
+</p>
+
+<div class="hero-buttons">
+
+<a href="https://yourwebsite.com/app/BachaLo.apk"
+   class="primary-btn"
+   download>
+   Download APK
+</a>
+
+<a href="https://youtu.be/1B6dJ-93Yjo"
+   target="_blank"
+   class="secondary-btn"
+   style="text-decoration:none;">
+   Watch Demo 🎬
+</a>
+
+<!-- <button class="secondary-btn" onclick="openVideo()">
+    Watch Demo 🎬
+</button> -->
+
+</div>
+
+</div>
+
+<div class="phone">
+<img id="slider-img" src="assets/screenshot1.jpg">
+</div>
+
+</section>
+
+<section class="features" data-aos="fade-up">
+
+<h2 class="section-title">
+Powerful Safety Features
+</h2>
+
+<div class="feature-grid">
+
+<div class="feature">
+<h3>🆘 SOS Emergency</h3>
+<p>Instant emergency alerts and support.</p>
+</div>
+
+<div class="feature">
+<h3>📍 Live Location</h3>
+<p>Share location with trusted contacts.</p>
+</div>
+
+<div class="feature">
+<h3>🎤 Voice Trigger</h3>
+<p>Say "Help", "Save Me", or "Bachao".</p>
+</div>
+
+<div class="feature">
+<h3>🔊 Emergency Siren</h3>
+<p>Loud alarm activation in danger situations.</p>
+</div>
+
+<div class="feature">
+<h3>🔐 Fingerprint Lock</h3>
+<p>Additional protection for app access.</p>
+</div>
+
+<div class="feature">
+<h3>♿ Accessibility</h3>
+<p>Accessibility service support for emergencies.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<a href="https://play.google.com/store/apps/details?id=com.your.package"
+   target="_blank"
+   style="text-decoration:none;color:inherit;">
+
+<section class="feature"
+         data-aos="zoom-in"
+         style="margin:40px auto;text-align:center;max-width:900px;cursor:pointer;">
+
+    <h2>⭐⭐⭐⭐⭐ 4.9 Rating</h2>
+
+    <h1>BachaLo</h1>
+
+    <p>Women's Safety App</p>
+
+    <small>Tap to view on Google Play</small>
+
+</section>
+
+</a>
+
+<section class="features">
+<h2 class="section-title">FAQ</h2>
+<div class="feature"><h3>How does SOS work?</h3><p>Instantly sends emergency alerts and location.</p></div>
+<div class="feature"><h3>How does Voice Trigger work?</h3><p>Say Help, Save Me or Bachao.</p></div>
+<div class="feature"><h3>Is my data stored?</h3><p>No. Data remains on your device.</p></div>
+</section>
+
+<!-- <section class="features">
+<h2 class="section-title">Contact Us</h2>
+<form class="glass-card" action="mailto:tech09forte@gmail.com">
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea placeholder="Your Message"></textarea>
+<button class="primary-btn">Send Message</button>
+</form>
+</section> -->
+
+<section class="contact-section" data-aos="zoom-in" style="margin:40px auto;text-align:center;max-width:500px;">
+
+    <div class="feature">
+
+        <h2>📩 Need Help?</h2>
+
+        <p>
+            If you have any questions, suggestions, bug reports,
+            or face any issues while using BachaLo,
+            feel free to contact us.
+        </p>
+
+        <p>
+            Our support team will try to respond as soon as possible.
+        </p>
+
+        <!-- <a href="mailto:tech09forte@gmail.com" class="support-btn">
+            Contact Support
+        </a> -->
+
+        <a href="mailto:tech09forte@gmail.com" class="support-btn" style="color:white;">
+           Contact Support
+        </a>
+
+        <div class="support-email">
+            tech09forte@gmail.com
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+<p>Made with ❤️ By Deepak Verma</p>
+
+<p><a href="privacy.html" style="color:white;">Privacy Policy</a> | <a href="terms.html" style="color:white;">Terms & Conditions</a></p>
+
+</footer>
+
+<div id="cookieBanner" class="cookie-banner">
+    <p>
+        We use essential cookies to improve your browsing experience.
+        By continuing to use this website, you agree to our use of cookies.
+    </p>
+
+    <button onclick="acceptCookies()"  class="primary-btn">
+        Accept
+    </button>
+</div>
+
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init();
+
+const screenshots = [
+    "assets/screenshot1.jpg",
+    "assets/screenshot2.jpg",
+    "assets/screenshot3.jpg",
+    "assets/screenshot4.jpg",
+    "assets/screenshot5.jpg"
+];
+
+let current = 0;
+
+setInterval(() => {
+    current = (current + 1) % screenshots.length;
+
+    const img = document.getElementById("slider-img");
+
+    if (img) {
+        img.src = screenshots[current];
+    }
+}, 3000);
+
+tsParticles.load("particles-js",{
+ particles:{
+  number:{value:80},
+  move:{speed:1},
+  size:{value:2},
+  links:{enable:true,distance:120}
+ }
+});
+
+window.addEventListener("load", () => {
+
+    if(!localStorage.getItem("cookieAccepted")){
+        document.getElementById("cookieBanner").style.display = "block";
+    }
+
+});
+
+function acceptCookies(){
+
+    document.cookie =
+    "cookieConsent=true; max-age=31536000; path=/; SameSite=Lax";
+
+    document.getElementById("cookieBanner").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
